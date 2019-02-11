@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Counselling HITAM</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/vendor.css">
+    <link rel="stylesheet" href="static/css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.png" type="static/image/x-icon">
+    <link rel="icon" href="static/favicon.png" type="static/image/x-icon">
+	
+</head>
+<style>
+
+
+.outer {
+  
+  border: 1px solid transparent;
+  padding: em;
+  overflow-x: scroll;
+  max-width: 1000px;
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.box {
+  margin-right:12px;
+  padding: 5em;
+  border: 2px solid blue;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-bottom:10px;
+}
+
+.box:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.header__login{
+	height: 21px;
+   min-width: 21px;
+   position: absolute;
+   right: 20px;
+   top: 10px;
+}
+.header__login a{
+	color: #FFFFFF;
+}
+.header__login a:hover{
+	color: #a3a39f;
+}
+</style>
+<body id="top"> 
+
+    <!-- pageheader
+    ================================================== -->
+    <section class="s-pageheader s-pageheader--home">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="{% url 'home' %}">
+                        <img src="static/images/logo.png" alt="Homepage">
+                    </a>
+                </div> <!-- end header__logo -->
+
+                <ul class="header__social">
+                    <li>
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/login?lang=en" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://in.pinterest.com/" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
+
+               
+
+                <div class="header__login">
+                    {% if user.is_superuser %}
+ 				
+ 					<form class="logout-link" action="/accounts/logout/" method="POST">
+ 					{% csrf_token %}
+ 					<button type="submit">LogOut</button>
+ 					</form>
+ 					
+ 				<h4 style="text-transform: capitalize;">{{ user.username }} </h4>
+ 				{% elif user.is_authenticated %}
+ 					<form class="logout-link" action="/accounts/logout/" method="POST">
+ 					{% csrf_token %}
+ 					<button type="submit">LogOut</button>
+ 					<h4 style="text-transform: capitalize;">{{ user.username }} </h4>
+ 					</form>
+ 				{% else %}
+ 				<a style="padding-right: 4px;" href="{% url 'login' %}" class="button">Login</a>
+ 				<a style="padding-left: 6px;border-left: 1px solid #FFFFFF;" href="{% url 'signup' %}" class="button">Signup</a>
+ 				{% endif %}
+
+                </div>  <!-- end header__search -->
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Menu</h2>
+
+                    <ul class="header__nav">
+                        <li class="current"><a href="#0" title="">Home</a></li>
+                        <li class="has-children">
+                            <a href="#0" title="">Articles</a>
+                            <ul class="sub-menu">
+                            <li><a href="{% url 'article_list' %}">Lifestyle</a></li>
+                            <li><a href="{% url 'article_list' %}">Health</a></li>
+                            <li><a href="{% url 'article_list' %}">Family</a></li>
+                            <li><a href="{% url 'article_list' %}">Management</a></li>
+                            <li><a href="{% url 'article_list' %}">Travel</a></li>
+                            <li><a href="{% url 'article_list' %}">Work</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a href="#0" title="">Blog</a>
+                            <ul class="sub-menu">
+                            <li><a href="{% url 'blog_list' %}">Video Post</a></li>
+                            <li><a href="{% url 'blog_list' %}">Audio Post</a></li>
+                            <li><a href="{% url 'blog_list' %}">Gallery Post</a></li>
+                            <li><a href="{% url 'blog_list' %}">Standard Post</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url  'messages_redirect' %}" title="">Message</a></li>
+                        <li><a href="about.html" title="">About</a></li>
+                        <li><a href="contact.html" title="">Contact</a></li>
+                        
+                        {% if user.is_superuser %}
+                            <form class="logout-link" action="/accounts/logout/" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">LogOut</button>
+                            </form>
+                            <br>
+                        <li> <a href="{% url 'create' %}" class="highlights">New Article</a><br></li>
+                        <li> <a href="{% url 'createblog' %}" class="highlights">New Blog</a></li>
+
+                        <h4>Logged in as: {{ user.username }} </h4>
+                        {% elif user.is_authenticated %}
+                        <li>
+                            <form class="logout-link" action="/accounts/logout/" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">LogOut</button>
+                            <h4>Logged in as: {{ user.username }} </h4>
+                            </form>
+                        </li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">login</a></li>
+                        <li><a href="{% url 'signup' %}">signup</a></li>
+                        {% endif %}
+                        
+
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+
+	<script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/plugins.js"></script>
+    <script src="static/js/main.js"></script>
+
+
+
+<!--Previous data=========================================================================================================================================================================================================================================================================================================================================================================================== -->
+<body id="">
+		<header class="wrapper">
+		<h1><a href="{% url 'home' %}">Counselling</a></h1>
+		<nav>
+ 			<li>
+ 				{% if user.is_superuser %}
+ 				<ul>
+ 					<form class="logout-link" action="/accounts/logout/" method="POST">
+ 					{% csrf_token %}
+ 					<button type="submit">LogOut</button>
+ 					</form>
+ 					<br>
+ 				<a href="{% url 'create' %}" class="highlights">New Article</a><br>
+ 				<a href="{% url 'createblog' %}" class="highlights">New Blog</a>
+
+ 				<h4>Logged in as: {{ user.username }} </h4>
+ 			</ul>
+ 				
+ 				{% elif user.is_authenticated %}
+ 				<li>
+ 					<form class="logout-link" action="/accounts/logout/" method="POST">
+ 					{% csrf_token %}
+ 					<button type="submit">LogOut</button>
+ 					<h4>Logged in as: {{ user.username }} </h4>
+ 					</form>
+ 				</li>
+ 				{% else %}
+ 				<li><a href="{% url 'login' %}" class="button">login</a></li>
+ 				<li><a href="{% url 'signup' %}" class="button">signup</a></li>
+ 				{% endif %}
+ 			</li>
+
+ 	</nav>
+	</header>
+	<div class="wrapper" >
+		{% block content %}
+		{% endblock %}
+</body>
+</html>

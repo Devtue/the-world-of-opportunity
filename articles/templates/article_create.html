@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Counseling</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:200,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/20ab91acc4.js"></script>
+     <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+
+    
+</head>
+<style>
+  body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+#contact {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(rgba(15, 15, 17, 0.7), rgba(8, 17, 27, 0.7)), url("/static/images/hero-bg1.jpg") 50% fixed;
+  background-size: cover;
+  overflow: hidden;
+  padding-bottom: 200px;
+}
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+.section-header {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  font-family: 'Raleway';
+  font: 300 60px ;
+  letter-spacing: 6px;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.contact-wrapper {
+  margin: 0 auto;
+  padding-top: 20px;
+  position: relative;
+  max-width: 800px;
+}
+
+/* Begin Left Contact Page */
+.form-horizontal {
+  max-width: 400px;
+  font-family: 'Lato';
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+}
+
+.form-control, textarea {
+  width: 800px;
+  background-color: #111;
+  color: #fff;
+  letter-spacing: 1px;
+  height:40px;
+    font-size:14pt;
+}
+
+.send-button {
+  margin-top: 15px;
+  height: 34px;
+  width: 400px;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+}
+
+.button {
+  width: 400px;
+  height: 34px;
+  transition: all .2s ease-in-out;
+}
+
+.send-text {
+  display: block;
+  margin-top: 10px;
+  font: 300 14px 'Lato', sans-serif;
+  letter-spacing: 2px;
+}
+
+.button:hover {
+  transform: translate3d(0px, -29px, 0px);
+}
+
+/* Begin Right Contact Page */
+.direct-contact-container {
+  max-width: 400px;
+  float: right;
+  margin-top: 5px;
+}
+
+/* Location, Phone, Email Section */
+.contact-list {
+  list-style-type: none;
+  margin-left: -30px;
+  padding-right: 20px;
+}
+
+.list-item {
+  line-height: 4;
+  color: #aaa;
+}
+
+.contact-text {
+  font: 300 18px 'Lato', sans-serif;
+  letter-spacing: 1.9px;
+  color: #bbb;
+}
+
+.place {
+  margin-left: 62px;
+}
+
+.phone {
+  margin-left: 56px;
+}
+
+.gmail {
+  margin-left: 53px;
+}
+
+.contact-text a {
+  color: #bbb;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+
+.contact-text a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* Social Media Icons */
+.social-media-list {
+  position: relative;
+  font-size: 2.3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.social-media-list li a {
+  color: #fff;
+}
+
+.social-media-list li {
+  position: relative; 
+  top: 0;
+  left: -20px;
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  margin: 10px auto;
+  line-height: 70px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: rgb(27,27,27);
+  cursor: pointer; 
+  transition: all .2s ease-in-out;
+}
+
+.social-media-list li:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 0 1px #fff;
+  transition: all .2s ease-in-out;
+}
+
+.social-media-list li:hover {
+  background-color: #fff; 
+}
+
+.social-media-list li:hover:after {
+  opacity: 1;  
+  transform: scale(1.12);
+  transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+}
+
+.social-media-list li:hover a {
+  color: #111;
+}
+
+.copyright {
+  font: 200 14px 'Oswald', sans-serif;
+  color: #555;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+hr {
+  border-color: rgba(255,255,255,.8); ;
+}
+
+/* Begin Media Queries*/
+@media screen and (max-width: 760px) {
+    
+  .section-header {
+    font-size: 65px;
+  }
+  .direct-contact-container, .form-horizontal {
+    float: none;
+    margin: 10px auto;
+  }  
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 300px;
+  }    
+  .social-media-list li {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+  }
+  .social-media-list li:after {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+@media screen and (max-width: 569px) {
+  #contact {
+    height: 800px;
+    }
+  .section-header{
+    font-size: 50px;
+  }
+  .direct-contact-container, .form-wrapper {
+    float: none;
+    margin: 0 auto;
+  }  
+  .form-control, textarea {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  
+  .name, .email, textarea {
+    width: 280px;
+  } 
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 280px;
+  }  
+  .social-media-list {
+    left: 0;
+  }
+  .social-media-list li {
+    height: 55px;
+    width: 55px;
+    line-height: 55px;
+    font-size: 2rem;
+  }
+  .social-media-list li:after {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+  }
+  
+}
+
+@media screen and (max-width: 410px) {
+  .send-button {
+    width: 99%;
+  }
+}
+</style>
+<body>
+  <section id="contact">
+  
+  <h1 class="section-header">New Post</h1>
+  
+  <div class="contact-wrapper">
+    
+      <!---------------- 
+
+      CONTACT PAGE LEFT 
+    
+      -----------------> 
+    
+    <form class="form-horizontal" role="form" action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title" placeholder="Title">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="slug" maxlength="50" required="" id="id_slug" value="" placeholder="Slug">
+        </div>
+      </div>
+
+      <textarea class="form-control" name="body"  rows="10" required="" id="id_body" data-gramm="true" data-txt_gramm_id="73b46138-465f-52db-0e1f-52ca2352929e" data-gramm_id="73b46138-465f-52db-0e1f-52ca2352929e" spellcheck="false" data-gramm_editor="true" placeholder="Body" ></textarea>
+      <br>
+      <label style="float: left;color: #00f2ff;font-size: 19px;margin-right: 10px;" for="id_thumb">Select an image: </label><input type="file" name="thumb" id="id_thumb" placeholder="add image for article">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input class="form-control" type="text" name="url" maxlength="255" required="" id="id_url" value="" placeholder="Url">
+        </div>
+      </div>
+     <input class="btn btn-primary send-button" id="submit" type="submit" value="Post">
+
+    </form>
+    
+  </div>
+  
+</section>  
+  
+<script>
+  const titleInput = document.querySelector('input[name=title]');
+  const slugInput = document.querySelector('input[name=slug]');
+  const slugify = (val) =>{
+    return val.toString().toLowerCase().trim()
+    .replace(/&/g,'-and-')
+    .replace(/[\s\W-]+/g,'-')
+  };
+  titleInput.addEventListener('keyup',(e) => {
+    slugInput.setAttribute('value',slugify(
+      titleInput.value));
+  });
+</script>
+</body>
+</html>

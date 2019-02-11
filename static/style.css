@@ -1,0 +1,24 @@
+body{
+	background-position: center;
+	position: relative;
+	z-index: -1;
+	
+	background-repeat: no-repeat;
+	color: #000000;
+}
+
+body*{
+	font-family: Ubuntu;
+}
+h1,h2,h3,h4,h5{
+	font-weight: normal;
+	margin: 10;
+}
+a,a.hover,a.visited{
+	color: #00b6f1;
+	text-decoration: none;
+}
+img{
+	width: 100px;
+	height: 100px;
+}

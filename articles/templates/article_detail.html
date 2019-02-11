@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Counseling</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/vendor.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- script
+    ================================================== -->
+    <script src="/static/js/modernizr.js"></script>
+    <script src="/static/js/pace.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+
+</head>
+<style>
+.outer {
+  
+  border: 1px solid transparent;
+  overflow-x: scroll;
+  max-width: 1000px;
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.box {
+  margin-right:12px;
+  padding: 5em;
+  border: 2px solid blue;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-bottom:10px;
+}
+
+.box:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.position {
+ margin-left: auto;
+margin-right: auto;
+}
+
+#workarea {
+  width: 0;
+height: 0;
+}
+
+#personal {
+  color:white;
+  text-decoration:none;
+  position:absolute;
+  bottom:15px;
+  right:2%;
+}
+/*    start code for the actual button:         */
+
+
+/*   
+    Spot is the span on the inside of the href that
+    fills the parent and makes the hover and link work
+    for the entire div
+*/
+
+.spot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -3px;
+  left: 0;
+}
+/*
+    This is the outer svg wrapper that the SVG itself will 
+    fill. Multiple svg-wrapper classes can be put side by side.
+*/
+
+.svg-wrapper {
+ margin-top: 0px;
+position: absolute;
+width: 150px;
+height: 40px;
+display: inline-block;
+border-radius: 3px;
+margin-left: 0px;
+margin-right: 0px;
+}
+/*
+  This is where we define the fill, color, thickness,
+  and stroke pattern of the SVG when there is no hover.
+  The dasharray and offset together define the line position
+  under the words. Here's also where the transition speed is set.
+*/
+
+#shape {
+  stroke-width: 6px;
+  fill: transparent;
+  stroke: #009FFD;
+  stroke-dasharray: 85 400;
+  stroke-dashoffset: -220;
+  transition: 1s all ease;
+}
+/* 
+    Pushing the text up into the SVG. Without this the
+    text would be below the div's.
+*/
+
+#text {
+  margin-top: -35px;
+  text-align: center;
+}
+
+#text button {
+  color: white;
+text-decoration: none;
+font-weight: 100;
+font-size: 1.1em;
+background: transparent;
+border: transparent;
+}
+/* 
+    Changing the shape on hover. I change the color of the stroke,
+make it thinner, then set it to again wrap around the entire parent element.
+*/
+
+.svg-wrapper:hover #shape {
+  stroke-dasharray: 50 0;
+  stroke-width: 3px;
+  stroke-dashoffset: 0;
+  stroke: #06D6A0;
+}
+
+textarea {
+
+    min-height: 10rem;
+
+}
+input{
+    width: 100%;
+}
+</style>
+<body id="top"> 
+
+    <!-- pageheader
+    ================================================== -->
+    <div class="s-pageheader">
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="{% url 'home' %}">
+                        <img src="/static/images/logo1.png" >
+                    </a>
+                </div> <!-- end header__logo -->
+
+                <ul class="header__social">
+                    <li>
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/login?lang=en" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://in.pinterest.com/" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
+
+                <a class="header__search-trigger" href="#0"></a>
+
+                <div class="header__search">
+
+                    <form role="search" method="get" class="header__search-form" action="#">
+                        <label>
+                            <span class="hide-content">Search for:</span>
+                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="on">
+                        </label>
+                        <input type="submit" class="search-submit" value="Search">
+                    </form>
+        
+                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+
+                </div>  <!-- end header__search -->
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Menu</h2>
+
+                    <ul class="header__nav">
+                        <li class="current"><a href="{% url 'home' %}" title="">Home</a></li>
+                        <li><a href="{% url 'about' %}" title="">About</a></li>
+                        <li><a href="{% url 'contact' %}" title="">Contact</a></li>
+                        {% if user.is_superuser %}
+                        <li class="has-children">
+                            <a href="#0" title="">Admin</a>
+                            <ul class="sub-menu">
+                                <li> <a href="{% url 'create' %}">New Post</a></li>
+                                <li style="text-transform: capitalize; cursor: none;"><a style="text-transform: capitalize; cursor: default;" onMouseOver="this.style.color='rgba(255, 255, 255, 0.6)'">User Name: {{ user.username }}</a> </li>
+                                <li> <a href="{% url 'password_change' %}">Change password ? </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <form class="logout-link" action="/accounts/logout/" method="POST">
+                            {% csrf_token %}
+                            <div id="workarea">
+                                  <div class="position">
+                                    <div class="svg-wrapper">
+                                      <svg height="40" width="150" >
+                                        <rect id="shape" height="40" width="148" />
+                                        <div id="text">
+                                         <button type="submit" class="spot">LogOut</button>
+                                        </div>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                            </form>
+                        </li>
+                        {% elif user.is_authenticated %}
+                         <li style="text-transform: capitalize; cursor: none;"><a  style="text-transform: capitalize; cursor: default;" onMouseOver="this.style.color='rgba(255, 255, 255, 0.6)'" > User Name: {{ user.username }}</a> </li>
+                        <li>
+                            <form class="logout-link" action="/accounts/logout/" method="POST">
+                            {% csrf_token %}
+                            
+                                <div id="workarea">
+                                  <div class="position">
+                                    <div class="svg-wrapper">
+                                      <svg height="40" width="150" >
+                                        <rect id="shape" height="40" width="148" />
+                                        <div id="text">
+                                         <button type="submit" class="spot">LogOut</button>
+                                        </div>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                           
+                            </form>
+                        </li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">SignUp</a></li>
+                        {% endif %}
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+       </div>  <!-- end s-pageheader -->
+ 
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-gallery">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                   {{ article.title }}
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date"><i class="fa fa-calendar" style="font-size:16px"></i> {{ article.date|date:"j F o" }} <i class="fa fa-clock-o" style="font-size:16px"></i> {{article.date|date:"h:i A l "}}</li>
+                </ul>
+            </div> <!-- end s-content__header -->
+            <div class="s-content__media col-full">
+                <div class="s-content__slider slider">
+                    <div class="slider__slides">
+                        <div class="slider__slide">
+                            <img src="{{article.thumb.url}}" alt="" >
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end s-content__media -->
+            <div class="col-full s-content__main">
+
+                <p class="lead"> {{ article.body }} </p>
+                <a target="_blank" href="{{ article.url }}">URL: {{ article.url }}</a>
+                {% if user.is_authenticated %}
+                <p style="font-size: 20px;" ><a class='like-btn' style=" letter-spacing: 4px;"  data-href='{{ article.get_api_like_url }}'data-likes='{{ article.likes.count }}' href="{{ article.get_like_url}}"><i style="font-size: 24px;" class="fa fa-thumbs-o-up"></i></a>{{ article.likes.count }}</p>
+                {%endif%}
+            </div> <!-- end s-content__main -->
+
+        </article>
+        <!-- comments
+        ================================================== -->
+        <div  class="comments-wrap">
+ {% if user.is_authenticated %}
+            <div id="comments" class="row">
+                <div id="divid" class="col-full">
+{% with comments.count as total_comments %}
+                    <h3 class="h2">{{ total_comments }} Comment{{ total_comments|pluralize }}</h3>
+{% endwith %}
+<hr>
+                    <!-- commentlist -->
+                    <ol class="commentlist">
+
+                        <li class="depth-1 comment">
+
+                            
+{% for comment in comments %}
+                        <div class="comment__content">
+                            <div class="comment__avatar">
+                                <img width="50" height="50" class="avatar" src="/static/images/avatars/user-01.png" alt="">
+                            </div>
+                                <div class="comment__info">
+                                    
+
+                                    <div  class="comment__meta">
+                                        <time style="text-transform: capitalize;" class="comment__time"> {{ comment.name }}  <i class="fa fa-tag" style="font-size:16px;"></i>  {{ comment.created|date:"j F o -   h:i A  " }}</time>
+                                    </div>
+                                
+                                <cite style="text-transform: capitalize;">{{ comment.body|linebreaks }}</cite>
+                                <hr>
+                            <div style="margin-left: 20px;">
+                                {% for reply in comment.replies.all %}
+                                <div style="float: left;margin-right: 15px;">
+                                <img width="50" height="50" src="/static/images/avatars/user-01.png" alt="">
+                                </div>
+                                <time style="text-transform: capitalize;" class="comment__time">Replied by  {{ reply.name }} on <i class="fa fa-tag" style="font-size:16px;"></i>  {{ reply.created|date:"j F o" }}</time>
+                                <cite style="text-transform: capitalize;">{{ reply.body|linebreaks }}</cite>
+                                <hr>
+                                {% endfor %}
+                            </div>
+                                <form name="contactForm" id="friend_form"action="." method="post">
+                                <fieldset>
+                                {{ comment_form.as_p }}
+                                {% csrf_token %}
+                                <input type="hidden" name="comment_id" value="{{ comment.id}}">
+                                <button id="go" style="width: auto;height: 4rem !important;display: inline-flex;align-items: center;float: right;" type="submit" value="Add comment" class="submit btn--primary btn--large full-width"><i class="fa fa-paper-plane"></i></button>
+                                </fieldset>
+                                </form> <!-- end form -->
+                                <hr>
+                                {% empty %}
+                                <p>There are no comments yet.</p>
+                                 </div>
+
+                        </div>
+
+
+                        </li> <!-- end comment level 1 -->
+{% endfor %}
+                    <!-- respond
+                    ================================================== -->
+                    <div style="margin-left: 10px;margin-right: 10px;" class="respond">
+                        <h3 class="h2">Add Comment</h3>
+                        {% if new_comment %}
+                        <h2>Your comment has been added.</h2>
+                        {% else %}
+                        <form name="contactForm" id="friend_form"action="." method="post">
+                            <fieldset>
+                                {{ comment_form.as_p }}
+                                {% csrf_token %}
+                                <button id="go" style="width: auto;height: 4rem !important;display: inline-flex;align-items: center;float: right;" type="submit" value="Add comment" class="submit btn--primary btn--large full-width"><i class="fa fa-paper-plane"></i></button>
+                            </fieldset>
+<script>
+  $('body').on('submit', '#friend_form', function() {
+        // Stop form from submitting normally
+        var friendForm = $(this);
+        // Send the data using post
+        var posting = $.post( friendForm.attr('action'), friendForm.serialize() );
+        // if success:
+        posting.done(function(data) {
+          $("#divid").load(" #divid");
+          
+        });
+        // if failure:
+        posting.fail(function(data) {
+          $("#divid").load(" #divid");
+        });
+        return false;
+    });
+</script>
+                        </form> <!-- end form -->
+                        {% endif %}
+                    </div> <!-- end respond -->
+                </div> <!-- end col-full -->
+            </div> <!-- end row comments -->
+            {% endif %}
+        </div> <!-- end comments-wrap -->
+ </section> <!-- end section -->
+
+<!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+                
+                <div class="col-two md-four mob-full s-footer__sitelinks">
+                        
+                    <h4>Quick Links</h4>
+
+                    <ul class="s-footer__linklist">
+                        <li><a onmouseover="this.style.color='rgba(255, 255, 255)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Home</a></li>
+                        <li><a onmouseover="this.style.color='rgba(255, 255, 255)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">About</a></li>
+                        <li><a onmouseover="this.style.color='rgba(255, 255, 255)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Contact</a></li>
+                    </ul>
+
+                </div> <!-- end s-footer__sitelinks -->
+
+                
+
+                <div class="col-two md-four mob-full s-footer__social">
+                        
+                    <h4>Social</h4>
+
+                    <ul class="s-footer__linklist">
+                        <li><a onmouseover="this.style.color='#4867aa'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Facebook</a></li>
+                        <li><a onmouseover="this.style.color='#b13aa2'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Instagram</a></li>
+                        <li><a onmouseover="this.style.color='#00b6f1'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Twitter</a></li>
+                        <li><a onmouseover="this.style.color='#ee1b22'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Pinterest</a></li>
+                        <li><a onmouseover="this.style.color='#d6492e'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">Google+</a></li>
+                        <li><a onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'" href="#0">LinkedIn</a></li>
+                    </ul>
+
+                </div> <!-- end s-footer__social -->
+
+                <div class="col-five md-full end s-footer__subscribe">
+                        
+                    <h4>Our Newsletter</h4>
+
+                    <p onmouseover="this.style.color='rgba(255, 255, 255)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.4)'">A newsletter is a printed report containing news of the activities of a business or an organization that is sent by mail regularly to all its members, customers, employees or people, who are interested in. Newsletters generally contain one main topic of interest to its recipients.</p>
+                    <div class="subscribe-form">
+                        <form id="mc-form" class="group" novalidate="true">
+
+                            <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                
+                            <input type="submit" name="subscribe" value="Send">
+                
+                            <label for="mc-email" class="subscribe-message"></label>
+                
+                        </form>
+                    </div>
+
+                </div> <!-- end s-footer__subscribe -->
+
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="col-full">
+                    <div class="s-footer__copyright">
+                        <span><a onMouseOver="this.style.color='#06D6A0'" onMouseOut="this.style.color='#ffffff'" href="">Powered by HITAM</a></span>
+                        <span>© Copyright Opportunities 2018</span> 
+                        <span>Designed by <a onMouseOver="this.style.color='#06D6A0'" onMouseOut="this.style.color='#ffffff'"  href="">Alpha Technologies</a></span>
+                    </div>
+
+                    <div class="go-top">
+                        <a class="smoothscroll" title="Back to Top" href="#top"></a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/plugins.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>

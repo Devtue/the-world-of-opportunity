@@ -1,0 +1,276 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Signup</title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head> 
+<style>
+	body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: linear-gradient(rgba(82, 96, 174, 0.7), rgba(8, 17, 27, 0.7)),  url("/static/images/hero-bg.jpg") 50% fixed;
+  background-size: cover;
+}
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 15px;
+  
+}
+
+.signup {
+  border-radius: 6px 6px 7px 7px;
+  padding: 10px 20px 20px 20px;
+  width: 90%;
+  max-width: 320px;
+  background: #ffffff;
+  position: relative;
+  padding-bottom: 80px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+.signup.loading button {
+  max-height: 100%;
+  padding-top: 50px;
+}
+.signup.loading button .spinner {
+  opacity: 1;
+  top: 40%;
+}
+.signup.ok button {
+  background-color: #8bc34a;
+}
+.signup input {
+  display: block;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  width: 100%;
+  border: 1px solid #d40ff2;
+  transition: border-width 0.2s ease;
+  border-radius: 25px;
+  color: #ccc;
+  margin-top: 5px;
+}
+.signup input + i.fa {
+  color: #fff;
+  font-size: 1em;
+  position: absolute;
+  margin-top: -47px;
+  opacity: 0;
+  left: 0;
+  transition: all 0.1s ease-in;
+}
+.signup input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2196F3;
+  border-left-width: 35px;
+}
+.signup input:focus + i.fa {
+  opacity: 1;
+  left: 30px;
+  transition: all 0.25s ease-out;
+}
+.signup a {
+  font-size: 0.8em;
+  color: #2196F3;
+  text-decoration: none;
+}
+.signup .title {
+  color: #444;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0 30px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+.signup label {
+  color: #444;
+  font-size: 1.0em;
+  font-weight: bold;
+  margin: 10px 0 30px 0;
+  padding-bottom: 20px;
+}
+.signup button {
+  width: 100%;
+  height: 100%;
+  padding: 10px 10px;
+  background: #2196F3;
+  color: #fff;
+  display: block;
+  border: none;
+  margin-top: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-height: 60px;
+  border: 0px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 6px 6px;
+  transform: rotateZ(0deg);
+  transition: all 0.1s ease-out;
+  border-bottom-width: 7px;
+  cursor: pointer;
+}
+.signup:not(.loading) button:hover {
+  box-shadow: 0px 1px 3px #2196F3;
+}
+.signup:not(.loading) button:focus {
+  border-bottom-width: 4px;
+}
+.login1 {
+  border-radius: 6px 6px 7px 7px;
+  padding: 30px 0px 0px 0px;
+  width: 90%;
+  max-width: 320px;
+  position: relative;
+  text-align: center;
+}
+.hovicon {
+    display: inline-block;
+    font-size: 30px;
+    line-height: 60px;
+    cursor: pointer;
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+    color: #fff;
+}
+
+.hovicon:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content:'';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.hovicon:before {
+    speak: none;
+    font-size: 48px;
+    line-height: 90px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hovicon.effect-1:after {
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 4px #fff;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(.8);
+    opacity: 0;
+}
+ .hovicon.effect-1.sub-a:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #0084FF;
+}
+.hovicon.effect-1.sub-a:hover:after {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+ .hovicon.effect-1.sub-b:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #dd4b39;
+}
+.hovicon.effect-1.sub-b:hover:after {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+   padding-bottom: 5px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+width: 150px;
+background-color: #fff;
+color: #000;
+text-align: center;
+border-radius: 27px;
+padding: 5px 5px;
+position: absolute;
+z-index: 0;
+bottom: 150%;
+left: 50%;
+margin-left: -70px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+<body>
+	<div class="wrapper">
+ 	<form class="signup" action="/accounts/signup/" method="POST">
+ 		<p class="title">Sign Up</p>
+ 		{% csrf_token %}
+    <label for="id_username">Username:</label>
+    <input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username">
+    <i class="fa fa-user"></i>
+    <label for="id_password1">Password:</label>
+    <input type="password" name="password1" required="" id="id_password1">
+    <i class="fa fa-key"></i>
+    <label for="id_password2">Confirm Password:</label>
+    <input type="password" name="password2" required="" id="id_password2">
+ 		<i class="fa fa-key"></i>
+ 		<button type="submit">
+ 			<span class="state">Sign Up</span>
+      </button>
+ 	</form>
+  <div class="login1"><div class="tooltip"><b style="color: #ffffff;" >Other options for Signup</b>
+  <span class="tooltiptext">Google | Facebook</span>
+</div><br>
+<a href="{% url "social:begin" "google-oauth2" %}" class="hovicon effect-1 sub-b"><i class="fa fa-google"></i></a>
+  <a href="{% url "social:begin" "facebook" %}" class="hovicon effect-1 sub-a"><i class="fa fa-facebook"></i></a>
+ </div>
+ </div>
+</body>
+</html>
